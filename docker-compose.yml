@@ -3,4 +3,12 @@ services:
   web:
     build: .
     ports:
-      - "9708:3000"
+      - "9709:3000"
+  dev:
+    image: node:12
+    command: sh -c "yarn install && yarn dev"
+    ports:
+      - 9708:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
