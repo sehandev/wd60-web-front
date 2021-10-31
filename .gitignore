@@ -1,7 +1,12 @@
 # npm
 node_modules
+
+# yarn
+.yarn
+
 # next.js build files
 .next
+
 # environment variables
 .env
 .env.*

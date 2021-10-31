@@ -5,10 +5,13 @@ services:
     ports:
       - "9709:3000"
   dev:
-    image: node:12
-    command: sh -c "yarn install && yarn dev"
+    image: node:14.17.1-alpine
+    command: sh -c "
+      yarn set version berry &&
+      yarn &&
+      yarn dev"
     ports:
       - 9708:3000
-    working_dir: /app
+    working_dir: /workspace
     volumes:
-      - ./:/app
+      - ./:/workspace
