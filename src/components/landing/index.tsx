@@ -4,7 +4,7 @@ export const Landing: React.FC = () => {
     return (
         <div
             className="leading-normal tracking-normal text-gray-200 bg-cover bg-fixed"
-            style={{ backgroundImage: "url('/image/header.png');" }}
+            style={{ backgroundImage: "url('/image/header.png')" }}
         >
             <div className="container flex flex-col min-h-screen mx-auto px-8 pt-8">
                 <div className="flex items-center justify-between">
@@ -50,7 +50,7 @@ export const Landing: React.FC = () => {
                                     Signup for our service
                                 </label>
                                 <input
-                                    className="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+                                    className="shadow appearance-none border p-3 w-full text-gray-700 focus:ring focus:outline-none transition"
                                     id="emailaddress"
                                     type="text"
                                     placeholder="you@somewhere.com"
