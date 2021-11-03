@@ -1,6 +1,8 @@
 import React from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export const Landing: React.FC = () => {
+    const { data: session } = useSession();
     return (
         <div
             className="leading-normal tracking-normal text-gray-200 bg-cover bg-fixed"
@@ -17,14 +19,25 @@ export const Landing: React.FC = () => {
                         </span>
                     </a>
 
-                    <a
-                        className="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-                        href="/app"
-                    >
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">
-                            GO!
-                        </span>
-                    </a>
+                    {session ? (
+                        <button
+                            onClick={() => signOut()}
+                            className="flex items-center text-indigo-400 font-bold text-2xl lg:text-4xl lg:leading-tight"
+                        >
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">
+                                {session.user.name} - Sign Out
+                            </span>
+                        </button>
+                    ) : (
+                        <button
+                            onClick={() => signIn()}
+                            className="flex items-center text-indigo-400 font-bold text-2xl lg:text-4xl lg:leading-tight"
+                        >
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">
+                                Sign In
+                            </span>
+                        </button>
+                    )}
                 </div>
 
                 <div className="pt-24 md:pt-36 flex flex-wrap flex-col md:flex-row items-center">

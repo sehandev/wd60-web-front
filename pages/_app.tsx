@@ -4,12 +4,18 @@ import "tailwindcss/tailwind.css";
 import "@styles/global.css";
 import { Provider } from "react-redux";
 import store from "@redux/store";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+function MyApp({
+    Component,
+    pageProps: { session, ...pageProps },
+}: AppProps): JSX.Element {
     return (
-        <Provider store={store}>
-            <Component {...pageProps} />
-        </Provider>
+        <SessionProvider session={session}>
+            <Provider store={store}>
+                <Component {...pageProps} />
+            </Provider>
+        </SessionProvider>
     );
 }
 
